@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Project.Web.ViewModels.Activities.ActivityIndexViewModel>
+
+@{
+    ViewBag.Title = "Activities";
+}
+@*@Html.Partial("_ModalDialogPartial")*@
+
+<div class="row">
+    <h2>@ViewBag.Title</h2>
+</div>
+@*<div class="row">
+    @Html.ActionLink("New Activity", "Create", "Activities", new { area = string.Empty }, new { @class = "btn btn-default" })
+</div>*@
+<hr>
+<div class="row" id="update-target">
+    @Html.Action("ReadData", "Activities", new { area = string.Empty })
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/scroll-to-top")
+}

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Project.Web.ViewModels.Activities.ActivityIndexViewModel>
+
+<table class="table table-striped table-responsive table-hover">
+    <thead>
+        <tr class="info">
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th class="danger">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Duration) Hours
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.DueDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Activities", new { area = string.Empty, id = item.Id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Recalculate Due Date", "DueDateRecalculate", "Activities", new { area = string.Empty, id = item.Id }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.Partial("_PaginationPartial")
+@*@Scripts.Render("~/bundles/item-delete")*@
+

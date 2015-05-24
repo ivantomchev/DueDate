@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Project.Web.Areas.Administration.ViewModels.Activities.ActivityIndexViewModel>
+
+<table class="table table-striped table-responsive table-hover">
+    <thead>
+        <tr class="info">
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th class="danger">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Duration) Hours
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Update", "Activities", new { area = GlobalConstants.AdminArea, id = item.Id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Permanent Delete", "ActualDelete", "Activities", new { area = GlobalConstants.AdminArea, id = item.Id }, new { data_modal = "", @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.Partial("_PaginationPartial")
+@Scripts.Render("~/bundles/item-delete")
+
+

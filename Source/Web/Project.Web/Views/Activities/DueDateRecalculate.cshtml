@@ -1,0 +1,63 @@
+﻿@model Project.Web.ViewModels.Activities.ActivityRecaltulateDueDateViewModel
+@{
+    ViewBag.Title = "Recalculate Activity";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+
+@using (Ajax.BeginForm("UpdateDueDate", "Activities", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "update-duedate", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table table-striped table-responsive table-hover">
+        <thead>
+            <tr class="info">
+                <th class="col-md-4">
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </th>
+                <th class="danger">Controls</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DueDate)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.EditorFor(m => m.StartDate)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Duration)
+                </td>
+                <td>
+                    @Html.Submit(new { value = "Recalculate", @class = "btn btn-primary" })
+                </td>
+                <td id="update-duedate">
+                    @Html.DisplayFor(m => m.DueDate)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.ActionLink("Back to Activities", "Index", "Activities", null, new { @class = "btn btn-default" })
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/activate-datetimepicker")
+}
+
+
+
+

@@ -1,0 +1,24 @@
+﻿@model Nullable<DateTime>
+
+@{
+    var value = Model;
+
+    if (value == new DateTime())
+    {
+        value = DateTime.Now;
+    }
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+                <input value="@value" class="form-control valid" data-val="true" data-val-date="The field Start Date must be a date." data-val-required="The Start Date field is required." id="@Html.DisplayNameFor(m => m)" name="@Html.DisplayNameFor(m => m)" type="text">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                @Html.ValidationMessageFor(model => model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+</div>

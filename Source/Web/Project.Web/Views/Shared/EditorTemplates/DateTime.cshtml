@@ -1,0 +1,19 @@
+﻿@model Nullable<DateTime>
+@*@Value = Model != null ? Model.Value.Date.ToShortDateString() : string.Empty*@
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-9 col-sm-5">
+            @Html.LabelFor(model => model)
+            <div class='input-group' id='datetimepicker1'>
+
+                @Html.TextBoxFor(model => model, new { @class = "form-control", @Value = Model != new DateTime() ? Model.Value.Date.ToString() : string.Empty })
+
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            @Html.ValidationMessageFor(model => model, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
