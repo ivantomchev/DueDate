@@ -16,6 +16,7 @@
     using IndexViewModel = Project.Web.Areas.Administration.ViewModels.Activities.ActivityIndexViewModel;
     using InputModel = Project.Web.Areas.Administration.ViewModels.Activities.ActivityInputModel;
     using DeleteViewModel = Project.Web.Areas.Administration.ViewModels.Activities.ActivityDeleteViewModel;
+    using Infrastrusture.Extensions;
 
     public class ActivitiesController : AdminController
     {
